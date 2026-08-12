@@ -90,8 +90,8 @@
   footer p{font-size:.85rem;color:var(--gray-light)}
 
   /* ---------- אנימציות ---------- */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
-  .reveal.on{opacity:1;transform:none}
+  /* התוכן תמיד גלוי — בלי אנימציית הופעה שתלויה בגלילה/JS/טאב פעיל.
+     (הוסר מנגנון ה-reveal שגרם ל"דף ריק" בדפדפן הפנימי של וואטסאפ.) */
 
   @media (max-width:600px){
     .hero{padding:70px 20px 60px}
