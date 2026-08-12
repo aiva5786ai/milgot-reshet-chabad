@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מלגת לימודים 7,000 ₪ — רשת חינוך חב״ד</title>
+<meta name="description" content="רשת חינוך חב״ד מעניקה מלגות בסך 7,000 ₪ לסטודנטיות במסלול חינוך ומנהיגות בגיל הרך. ההרשמה פתוחה.">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#403090;        /* צבעי הרשת — נדגמו מהלוגו הרשמי */
+    --cyan:#00b0d0;
+    --ink:#1d1d1f;
+    --gray:#6e6e73;
+    --gray-light:#86868b;
+    --bg:#ffffff;
+    --bg-soft:#f5f5f7;
+    --radius:28px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Heebo',-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+  /* ---------- ניווט ---------- */
+  nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.06)}
+  .nav-inner{max-width:1000px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{height:40px;display:block}
+  .nav-cta{font-size:.9rem;font-weight:500;color:#fff;background:var(--purple);padding:8px 20px;border-radius:980px;text-decoration:none;transition:opacity .2s}
+  .nav-cta:hover{opacity:.85}
+
+  /* ---------- הירו ---------- */
+  .hero{text-align:center;padding:110px 24px 90px;max-width:900px;margin:0 auto}
+  .hero .eyebrow{font-size:1.05rem;font-weight:600;color:var(--cyan);letter-spacing:.01em;margin-bottom:16px}
+  .hero h1{font-size:clamp(2.6rem,7vw,4.5rem);font-weight:800;letter-spacing:-.02em;line-height:1.08;margin-bottom:22px}
+  .hero h1 .grad{background:linear-gradient(90deg,var(--purple) 20%,var(--cyan) 80%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero .sub{font-size:clamp(1.15rem,2.6vw,1.45rem);font-weight:300;color:var(--gray);max-width:620px;margin:0 auto 38px}
+  .hero .sub strong{font-weight:600;color:var(--ink)}
+  .btn{display:inline-block;font-size:1.08rem;font-weight:500;padding:15px 38px;border-radius:980px;text-decoration:none;transition:all .2s}
+  .btn-primary{background:var(--purple);color:#fff}
+  .btn-primary:hover{transform:scale(1.03);box-shadow:0 10px 30px rgba(64,48,144,.3)}
+  .btn-ghost{color:var(--purple)}
+  .btn-ghost:hover{text-decoration:underline}
+  .hero .hint{margin-top:16px;font-size:.9rem;color:var(--gray-light)}
+
+  /* ---------- מספר ענק ---------- */
+  .big-number{background:var(--bg-soft);text-align:center;padding:100px 24px;border-radius:var(--radius);max-width:1000px;margin:0 auto}
+  .big-number .label{font-size:1.2rem;font-weight:500;color:var(--gray);margin-bottom:6px}
+  .big-number .num{font-size:clamp(4.5rem,14vw,9rem);font-weight:900;letter-spacing:-.04em;line-height:1;background:linear-gradient(135deg,var(--purple) 25%,var(--cyan) 90%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .big-number .after{font-size:1.15rem;color:var(--gray);margin-top:14px;font-weight:300}
+
+  /* ---------- סקשן כללי ---------- */
+  section{padding:90px 24px}
+  .inner{max-width:1000px;margin:0 auto}
+  .sec-head{text-align:center;margin-bottom:56px}
+  .sec-head h2{font-size:clamp(1.9rem,4.5vw,2.9rem);font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
+  .sec-head p{font-size:1.15rem;color:var(--gray);font-weight:300}
+
+  /* ---------- כרטיסי תנאים ---------- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .card{background:var(--bg-soft);border-radius:var(--radius);padding:44px 30px;text-align:center;transition:all .25s}
+  .card:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(0,0,0,.08)}
+  .card .num{font-size:.85rem;font-weight:700;color:var(--cyan);letter-spacing:.14em;margin-bottom:14px}
+  .card h3{font-size:1.45rem;font-weight:700;letter-spacing:-.01em;margin-bottom:10px}
+  .card h3 span{display:block;font-size:1.05rem;font-weight:500;color:var(--purple);margin-top:2px}
+  .card p{color:var(--gray);font-size:1rem;font-weight:300}
+
+  /* ---------- למי ---------- */
+  .whofor{background:var(--bg-soft);border-radius:var(--radius);max-width:1000px;margin:0 auto;text-align:center;padding:80px 30px}
+  .whofor h2{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin-bottom:18px}
+  .whofor p{font-size:1.25rem;font-weight:300;color:var(--gray);max-width:640px;margin:0 auto}
+  .whofor p strong{color:var(--ink);font-weight:600}
+
+  /* ---------- טופס ---------- */
+  .form-wrap{max-width:520px;margin:0 auto}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:.92rem;font-weight:500;color:var(--ink);margin-bottom:6px}
+  .field input,.field textarea{width:100%;padding:14px 16px;font-family:'Heebo',sans-serif;font-size:1.02rem;border:1px solid #d2d2d7;border-radius:14px;background:#fff;transition:all .15s;color:var(--ink)}
+  .field input::placeholder,.field textarea::placeholder{color:#b0b0b5}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 4px rgba(64,48,144,.12)}
+  .submit{width:100%;font-family:'Heebo',sans-serif;font-size:1.1rem;font-weight:600;color:#fff;background:var(--purple);border:none;padding:16px;border-radius:980px;cursor:pointer;transition:all .2s;margin-top:8px}
+  .submit:hover{transform:scale(1.02);box-shadow:0 10px 30px rgba(64,48,144,.3)}
+  .form-note{text-align:center;font-size:.85rem;color:var(--gray-light);margin-top:14px}
+
+  /* ---------- פוטר ---------- */
+  footer{background:var(--bg-soft);padding:36px 24px;text-align:center}
+  footer img{height:56px;margin-bottom:12px}
+  footer p{font-size:.85rem;color:var(--gray-light)}
+
+  /* ---------- אנימציות ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.on{opacity:1;transform:none}
+
+  @media (max-width:600px){
+    .hero{padding:70px 20px 60px}
+    section{padding:60px 20px}
+    .big-number{padding:70px 20px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <img class="nav-logo" src="logo.png" alt="רשת חינוך חב״ד">
+    <a class="nav-cta" href="#register">להרשמה</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="eyebrow">רשת חינוך חב״ד · מסלול חינוך ומנהיגות בגיל הרך</div>
+  <h1>מלגה של <span class="grad">7,000 ₪</span><br>למי שמגדלת את הדור הבא</h1>
+  <p class="sub">הרשת מעניקה מלגות לימודים לסטודנטיות במסלול <strong>חינוך ומנהיגות בגיל הרך</strong> — לימודים, התנסות אמיתית בשטח, וליווי מקצועי צמוד. הכל ביחד.</p>
+  <a class="btn btn-primary" href="#register">להרשמה למלגה</a>
+  <div class="hint">ההרשמה קצרה — פחות מדקה</div>
+</div>
+
+<div class="big-number reveal">
+  <div class="label">גובה המלגה לשנת הלימודים</div>
+  <div class="num">7,000 ₪</div>
+  <div class="after">לכל סטודנטית שתתקבל לתוכנית</div>
+</div>
+
+<section id="terms">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <h2>שלושה צעדים. זה הכל.</h2>
+      <p>מה נדרש ממך כדי לקבל את המלגה</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="num">01</div>
+        <h3>שילוב בגן חב״ד <span>4 שעות שבועיות</span></h3>
+        <p>התנסות מעשית בגן של הרשת — ניסיון אמיתי בשטח שהופך את הלימודים למקצוע</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">02</div>
+        <h3>מפגש ברשת <span>פעם בשנה</span></h3>
+        <p>מפגש העשרה והיכרות עם קהילת המחנכות של הרשת — כלים, השראה וחיבורים</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">03</div>
+        <h3>שני מפגשי זום <span>לאורך השנה</span></h3>
+        <p>ליווי והעשרה מקצועית אונליין — מכל מקום, בזמן שנוח לך</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="whofor reveal">
+  <h2>למי מיועדת המלגה?</h2>
+  <p>לסטודנטיות הלומדות במסלול <strong>חינוך ומנהיגות בגיל הרך</strong> שרוצות לצמוח מקצועית, להתנסות בשטח, ולהיות חלק ממשפחת החינוך של רשת חינוך חב״ד.</p>
+</div>
+
+<section id="register">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <h2>נרשמות כאן.</h2>
+      <p>ממלאות פרטים — ונציגת הרשת חוזרת אלייך בהקדם בעז״ה</p>
+    </div>
+    <form class="form-wrap reveal" id="regForm">
+      <div class="field">
+        <label for="fullname">שם מלא</label>
+        <input type="text" id="fullname" required placeholder="השם המלא שלך">
+      </div>
+      <div class="field">
+        <label for="phone">טלפון נייד</label>
+        <input type="tel" id="phone" required placeholder="050-0000000" pattern="[0-9\-+ ]{9,15}">
+      </div>
+      <div class="field">
+        <label for="city">עיר מגורים</label>
+        <input type="text" id="city" required placeholder="באיזו עיר את גרה?">
+      </div>
+      <div class="field">
+        <label for="studies">מוסד לימודים ושנה</label>
+        <input type="text" id="studies" required placeholder="לדוגמה: מכללה X, שנה ב׳">
+      </div>
+      <div class="field">
+        <label for="notes">משהו שחשוב לך שנדע? (רשות)</label>
+        <textarea id="notes" rows="3" placeholder="שאלות, הערות..."></textarea>
+      </div>
+      <button type="submit" class="submit">שליחת הרשמה</button>
+      <div class="form-note">הפרטים נשמרים אצל הרשת בלבד ומטופלים בדיסקרטיות</div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <img src="logo.png" alt="רשת חינוך חב״ד">
+  <p>רשת חינוך חב״ד — רשת אהלי יוסף יצחק ליובאוויטש · מלגות לסטודנטיות במסלול חינוך ומנהיגות בגיל הרך</p>
+</footer>
+
+<script>
+  // הטופס שולח את ההרשמה לגוגל שיטס (דרך Google Apps Script) — בלי שרת.
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbzsiC_rLLEYcBD50OettCQZcdD1wjyaYl4s5SVn0XIK70-AHDmWWkzaS2605Qeq_7HBiA/exec";
+  const form = document.getElementById("regForm");
+  form.addEventListener("submit", async function(e){
+    e.preventDefault();
+    const btn = form.querySelector(".submit");
+    btn.disabled = true; btn.textContent = "שולח...";
+    const v = id => document.getElementById(id).value.trim();
+    const body = new URLSearchParams({
+      fullname: v("fullname"), phone: v("phone"),
+      city: v("city"), studies: v("studies"), notes: v("notes")
+    });
+    try {
+      await fetch(ENDPOINT, {method:"POST", mode:"no-cors", body});
+    } catch(err) { /* no-cors: אין תגובה קריאה, וזה תקין */ }
+    // מסך תודה
+    document.querySelector("#register .inner").innerHTML =
+      '<div style="text-align:center;padding:40px 0">' +
+      '<div style="font-size:3rem;margin-bottom:14px">\u2713</div>' +
+      '<h2 style="font-size:2rem;font-weight:800;margin-bottom:12px">ההרשמה נקלטה!</h2>' +
+      '<p style="font-size:1.2rem;color:#6e6e73;font-weight:300">תודה \ud83e\udd0d נציגת הרשת תחזור אלייך בהקדם בעז\u05f4ה</p>' +
+      '</div>';
+  });
+</script>
+
+</body>
+</html>
