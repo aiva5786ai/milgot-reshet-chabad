@@ -27,7 +27,9 @@
   /* ---------- ניווט ---------- */
   nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.06)}
   .nav-inner{max-width:1000px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;justify-content:space-between}
+  .nav-brand{display:flex;align-items:center;gap:10px}
   .nav-logo{height:40px;display:block}
+  .nav-dept{font-size:.78rem;font-weight:500;color:var(--gray-light);white-space:nowrap}
   .nav-cta{font-size:.9rem;font-weight:500;color:#fff;background:var(--purple);padding:8px 20px;border-radius:980px;text-decoration:none;transition:opacity .2s}
   .nav-cta:hover{opacity:.85}
 
@@ -106,13 +108,15 @@
 
 <nav>
   <div class="nav-inner">
-    <img class="nav-logo" src="logo.png" alt="רשת חינוך חב״ד">
+    <div class="nav-brand">
+      <img class="nav-logo" src="logo.png" alt="רשת חינוך חב״ד">
+      <span class="nav-dept">אגף גני ילדים</span>
+    </div>
     <a class="nav-cta" href="#register">להרשמה</a>
   </div>
 </nav>
 
 <div class="hero">
-  <div class="eyebrow">אגף גני ילדים</div>
   <h1>מלגת לימודים<br><span class="grad">למי שמגדלת את הדור הבא</span></h1>
   <p class="sub">הרשת מעניקה מלגות לימודים ל<strong>סטודנטיות שנה א׳ במסלולי הלימודים של הגיל הרך</strong> — לימודים, התנסות אמיתית בשטח, וליווי מקצועי צמוד. הכל ביחד.</p>
   <a class="btn btn-primary" href="#register">להרשמה למלגה</a>
