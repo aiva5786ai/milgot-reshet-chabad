@@ -85,6 +85,9 @@
   .submit{width:100%;font-family:'Heebo',sans-serif;font-size:1.1rem;font-weight:600;color:#fff;background:var(--purple);border:none;padding:16px;border-radius:980px;cursor:pointer;transition:all .2s;margin-top:8px}
   .submit:hover{transform:scale(1.02);box-shadow:0 10px 30px rgba(64,48,144,.3)}
   .form-note{text-align:center;font-size:.85rem;color:var(--gray-light);margin-top:14px}
+  .field input[type=file]{padding:11px 14px;cursor:pointer;font-size:.95rem}
+  .field input[type=file]::file-selector-button{font-family:'Heebo',sans-serif;border:none;background:var(--purple);color:#fff;font-weight:500;padding:8px 16px;border-radius:10px;margin-inline-end:12px;cursor:pointer}
+  .file-hint{font-size:.8rem;color:var(--gray-light);margin-top:6px}
 
   /* ---------- פוטר ---------- */
   footer{background:var(--bg-soft);padding:36px 24px;text-align:center}
@@ -181,7 +184,16 @@
       </div>
       <div class="field">
         <label for="studies">מוסד לימודים ושנה</label>
-        <input type="text" id="studies" required placeholder="לדוגמה: מכללה X, שנה ב׳">
+        <input type="text" id="studies" required placeholder="לדוגמה: מכללה X, שנה א׳">
+      </div>
+      <div class="field">
+        <label for="family">רקע משפחתי</label>
+        <textarea id="family" rows="3" placeholder="ספרי לנו קצת על הרקע המשפחתי שלך"></textarea>
+      </div>
+      <div class="field">
+        <label for="photo">תמונה</label>
+        <input type="file" id="photo" accept="image/*">
+        <div class="file-hint">תמונת פספורט / תמונה שלך (לא חובה)</div>
       </div>
       <div class="field">
         <label for="notes">משהו שחשוב לך שנדע? (רשות)</label>
@@ -202,14 +214,31 @@
   // הטופס שולח את ההרשמה לגוגל שיטס (דרך Google Apps Script) — בלי שרת.
   const ENDPOINT = "https://script.google.com/macros/s/AKfycbzsiC_rLLEYcBD50OettCQZcdD1wjyaYl4s5SVn0XIK70-AHDmWWkzaS2605Qeq_7HBiA/exec";
   const form = document.getElementById("regForm");
+
+  // מקטין תמונה ומחזיר data-URL (JPEG) כדי שההעלאה תהיה קלה ואמינה
+  async function photoDataURL(file, maxDim=1100, quality=0.85){
+    if(!file) return "";
+    const img = await new Promise((res,rej)=>{ const i=new Image(); i.onload=()=>res(i); i.onerror=rej; i.src=URL.createObjectURL(file); });
+    let w=img.width, h=img.height;
+    if(w>h && w>maxDim){ h=Math.round(h*maxDim/w); w=maxDim; }
+    else if(h>maxDim){ w=Math.round(w*maxDim/h); h=maxDim; }
+    const c=document.createElement("canvas"); c.width=w; c.height=h;
+    c.getContext("2d").drawImage(img,0,0,w,h);
+    return c.toDataURL("image/jpeg", quality);
+  }
+
   form.addEventListener("submit", async function(e){
     e.preventDefault();
     const btn = form.querySelector(".submit");
     btn.disabled = true; btn.textContent = "שולח...";
     const v = id => document.getElementById(id).value.trim();
+    const photoFile = document.getElementById("photo").files[0];
+    let photo = "", photoName = "";
+    try { photo = await photoDataURL(photoFile); photoName = photoFile ? photoFile.name : ""; } catch(_) {}
     const body = new URLSearchParams({
-      fullname: v("fullname"), phone: v("phone"),
-      city: v("city"), studies: v("studies"), notes: v("notes")
+      fullname: v("fullname"), phone: v("phone"), city: v("city"),
+      studies: v("studies"), family: v("family"), notes: v("notes"),
+      photo: photo, photoName: photoName
     });
     try {
       await fetch(ENDPOINT, {method:"POST", mode:"no-cors", body});
